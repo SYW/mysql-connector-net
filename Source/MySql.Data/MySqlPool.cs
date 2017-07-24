@@ -137,21 +137,8 @@ namespace MySql.Data.MySqlClient
           driver = null;
         }
       }
-
-      if (driver != null)
-      {
-        // first check to see that the server is still alive
-        if (!driver.Ping())
-        {
-          driver.Close();
-          driver = null;
-        }
-        else if (settings.ConnectionReset)
-          // if the user asks us to ping/reset pooled connections
-          // do so now
-          driver.Reset();
-      }
-      if (driver == null)
+	  
+	if (driver == null)
         driver = CreateNewPooledConnection();
 
       Debug.Assert(driver != null);
